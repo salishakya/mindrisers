@@ -57,17 +57,20 @@ mul(4)
 # argument ko priority badi huncha define gareko thau vanda
 mul(4, 4)
 
-def substract(x=3,y):
-    return x-y
 
-substract(y=4)
+# default arguments should always be defined at the last here, x =3 is default
+def substract(y, x=3):
+    return x - y
+
+
+substract(4)
 
 # check keyword argument (homework)
 
 # lambda functions (for small functions, it's a default function, has no names, any number of arguments, only one expression)
 # syntax: lambda arguments: expression
 
-sum = lambda x, y, z: x + y + z
+sum = lambda x, y, z: x + y + z  # noqa: E731
 
 sum(1, 2, 3)
 
