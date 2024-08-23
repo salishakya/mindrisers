@@ -1,9 +1,9 @@
 from Fibo import fib
-import Fibo as fib
+import Fibo as fibo
 import num
 # module directory bhitra gayera khojcha
 
-fib.fib(100)
+fibo.fib(100)
 num.sub(100, 1)
 num.sum(100, 1)
 
