@@ -160,3 +160,29 @@ print("x3:", x3)
 
 ####hsplit is for splitting along columns, so it’s most useful for arrays with multiple columns.
 ####vsplit is for splitting along rows, so it’s most useful for arrays with multiple rows.
+
+##use of timeit
+
+
+# Quick function: calculates the sum of a list
+def quick_function():
+    return sum(range(10000))
+
+
+# Slow function: performs a nested loop with a large number of iterations
+def slow_function():
+    result = 0
+    for i in range(1000):
+        for j in range(1000):
+            result += i * j
+    return result
+
+# Using %timeit to measure execution time
+%timeit quick_function()
+%timeit slow_function()
+
+# 112 μs ± 8.52 μs per loop here, microseconds (µs).
+# 56.8 ms ± 2.22 ms per loop here, milliseconds (ms).
+
+# The quick function runs in microseconds (µs).
+# The slow function runs in milliseconds (ms).
