@@ -114,3 +114,49 @@ theta
 print("sin(theta) =", np.sin(theta))
 
 # linspace is linear spacing so pi is 180 degree so 0 to 180 ko three spaces lincha
+
+arr2d2 = np.array([[7, 8, 9], [9, 5, 6]])
+
+np.hstack([arr2d, arr2d2])
+
+x = [1, 2, 3, 4, 5, 6, 7, 8]
+x1, x2, x3 = np.vsplit(x, [3, 5])
+print(x1, x2, x3)
+
+# vsplit and hsplit requires 2D arrays hence the code will show error
+
+x = np.array([[1, 2, 3, 4, 5, 6, 7, 8]])  # this is a 2d array
+x1, x2, x3 = np.vsplit(x, [3, 5])
+print(x1, x2, x3)
+
+# 2D array with 2 rows and 8 columns
+x = np.array([[1, 2, 3, 4, 5, 6, 7, 8], [9, 10, 11, 12, 13, 14, 15, 16]])
+
+# Split along columns at indices 3 and 5
+x1, x2, x3 = np.hsplit(x, [3, 5])
+
+print("x1:", x1)
+print("x2:", x2)
+print("x3:", x3)
+
+# 2D array with 6 rows and 4 columns
+x = np.array(
+    [
+        [1, 2, 3, 4],
+        [5, 6, 7, 8],
+        [9, 10, 11, 12],
+        [13, 14, 15, 16],
+        [17, 18, 19, 20],
+        [21, 22, 23, 24],
+    ]
+)
+
+# Split along rows at indices 2 and 4
+x1, x2, x3 = np.vsplit(x, [2, 4])
+
+print("x1:", x1)
+print("x2:", x2)
+print("x3:", x3)
+
+####hsplit is for splitting along columns, so it’s most useful for arrays with multiple columns.
+####vsplit is for splitting along rows, so it’s most useful for arrays with multiple rows.
