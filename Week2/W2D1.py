@@ -189,3 +189,20 @@ def slow_function():
 
 # The quick function runs in microseconds (µs).
 # The slow function runs in milliseconds (ms).
+
+# check the execution time of numpy array and normal python list using %timeit
+
+# Create a large Python list and a NumPy array
+python_list = list(range(1000000))
+numpy_array = np.arange(1000000)
+
+# Measure the time taken for a simple operation (like summing all elements)
+# print("Timing for Python list:")
+# # %timeit sum(python_list)
+print(sum(python_list))
+
+# print("\nTiming for NumPy array:")
+# # %timeit np.sum(numpy_array)
+print(np.sum(numpy_array))
+
+# NumPy is usually faster for numerical operations due to its underlying C implementation and optimizations
