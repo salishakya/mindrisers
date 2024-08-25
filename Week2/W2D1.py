@@ -177,9 +177,12 @@ def slow_function():
             result += i * j
     return result
 
+
 # Using %timeit to measure execution time
-%timeit quick_function()
-%timeit slow_function()
+# %timeit quick_function()
+# %timeit slow_function()
+
+# The %timeit magic command is specifically designed for Jupyter notebooks and is not valid in regular Python scripts (.py files). In .py files, you should use the timeit module instead of the %timeit magic command.
 
 # 112 μs ± 8.52 μs per loop here, microseconds (µs).
 # 56.8 ms ± 2.22 ms per loop here, milliseconds (ms).
