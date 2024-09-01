@@ -90,3 +90,9 @@ df.fillna(0)
 df.fillna(5)
 
 df.fillna(method="ffill")
+
+# method = "ffill" is now deprecated so using ffill function
+
+df.ffill()
+
+df.bfill()
