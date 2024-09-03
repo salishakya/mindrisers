@@ -1,6 +1,4 @@
 import pandas as pd
-import numpy as np
-import matplotlib.pylab as plt
 
 # merge and join - pd.merge() conditions sabai bracket bhitra huncha
 
