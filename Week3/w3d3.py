@@ -99,3 +99,19 @@ planets_series_groupby.median()
 
 for method, group in planets.groupby("method"):
     print("{0:30s} shape={1}".format(method, group.shape))
+
+from nbconvert import NotebookExporter
+from nbconvert.preprocessors import ExecutePreprocessor
+import nbformat
+
+# Load the notebook
+with open("your_notebook.ipynb") as file:
+    notebook = nbformat.read(file, as_version=4)
+
+# Execute the notebook
+ep = ExecutePreprocessor(timeout=600, kernel_name="python3")
+ep.preprocess(notebook, {"metadata": {"path": "./"}})
+
+# Save the executed notebook
+with open("executed_notebook.ipynb", "w") as file:
+    nbformat.write(notebook, file)
