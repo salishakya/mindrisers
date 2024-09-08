@@ -91,3 +91,4 @@ plt.style.use("tableau-colorblind10")
 
 fig, ax = plt.subplots()
 ax.barh(group_names, group_data)
+labels = ax.get_xticklabels()
