@@ -4,20 +4,19 @@ from bs4 import BeautifulSoup
 import pandas as pd
 import time
 
-# Specify the path to the Brave browser executable
-brave_path = "C:\Program Files\BraveSoftware\Brave-Browser\Application\brave.exe"  # Replace with the actual path to Brave's executable
+# Specify the path to Brave browser and ChromeDriver
+brave_path = r"C:\Program Files\BraveSoftware\Brave-Browser\Application\brave.exe"
+chrome_driver_path = r"C:\WebDrivers\chromedriver.exe"
 
-# Specify the path to the ChromeDriver executable
-chrome_driver_path = (
-    "C:\WebDrivers\chromedriver.exe"  # Replace with the path to your ChromeDriver
-)
-
-# Set the options for Brave
+# Set up Chrome options for Brave
 options = webdriver.ChromeOptions()
 options.binary_location = brave_path
 
-# Creating instance of Brave WebDriver using ChromeDriver
-driver = webdriver.Chrome(service=Service(chrome_driver_path), options=options)
+# Create the Service object with the path to ChromeDriver
+service = Service(chrome_driver_path)
+
+# Create ChromeDriver instance for Brave with Service and options
+driver = webdriver.Chrome(service=service, options=options)
 
 # Open the webpage
 url = "https://en.wikipedia.org/wiki/List_of_largest_companies_in_the_United_States_by_revenue"
