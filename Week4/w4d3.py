@@ -1,6 +1,4 @@
-import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
 
 education_districtwise = pd.read_csv("education_districtwise.csv")
 
