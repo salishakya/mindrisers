@@ -1,5 +1,4 @@
 from selenium import webdriver
-from selenium.webdriver.edge.service import Service
 from bs4 import BeautifulSoup
 import pandas as pd
 import time
