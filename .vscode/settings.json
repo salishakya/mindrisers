@@ -1,4 +1,4 @@
 {
-    "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.defaultFormatter": "ms-python.black-formatter",
     "editor.formatOnSave": true
 }
