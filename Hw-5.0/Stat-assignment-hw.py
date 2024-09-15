@@ -67,4 +67,9 @@ systematic_sample_df
 
 data.columns
 
-cluster_sample = data.groupby("Country")
+data["Country"].unique()
+
+countries_sampled = data["Country"].sample(n=3, random_state=42).unique()
+cluster_sample = data[data["Country"].isin(countries_sampled)]
+
+cluster_sample.head()
