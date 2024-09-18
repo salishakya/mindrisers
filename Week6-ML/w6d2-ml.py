@@ -1,3 +1,5 @@
+# linear regression using ols
+
 import pandas as pd
 import seaborn as sns
 
