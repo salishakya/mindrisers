@@ -1,6 +1,6 @@
 import pandas as pd
 import seaborn as sns
-
+import matplotlib.pyplot as plt
 
 penguins = sns.load_dataset("penguins")
 penguins.columns
@@ -35,3 +35,21 @@ model.summary()
 sns.regplot(x="bill_length_mm", y="body_mass_g", data=ols_data)
 
 sns.regplot(x="gender", y="body_mass_g", data=ols_data)
+
+# 1. Plotting the regression line for bill_length_mm vs body_mass_g
+plt.figure(figsize=(10, 6))
+sns.regplot(x="bill_length_mm", y="body_mass_g", data=ols_data)
+plt.title("Regression of Body Mass on Bill Length")
+plt.show()
+
+# 2. Visualizing the effect of gender on body_mass_g
+plt.figure(figsize=(10, 6))
+sns.boxplot(x="gender", y="body_mass_g", data=ols_data)
+plt.title("Body Mass by Gender")
+plt.show()
+
+# 3. Visualizing the effect of species on body_mass_g
+plt.figure(figsize=(10, 6))
+sns.boxplot(x="species", y="body_mass_g", data=ols_data)
+plt.title("Body Mass by Species")
+plt.show()
