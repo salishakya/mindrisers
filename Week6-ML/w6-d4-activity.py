@@ -49,7 +49,7 @@ X_train, X_test, y_train, y_test = train_test_split(
     data_X, data_y, test_size=0.3, random_state=42
 )
 
-ols_formula = "Sales ~ Radio + Social_Media + C(TV) + C(Influencer)"
+ols_formula = "Sales ~ Radio + C(TV)"
 
 ols_data = pd.concat([X_train, y_train], axis=1)
 
@@ -62,3 +62,10 @@ OLS = ols(formula=ols_formula, data=ols_data)
 model = OLS.fit()
 
 model.summary()
+
+from statsmodels.stats.outliers_influence import variance_inflation_factor
+
+X = data[["Radio", "Social_Media"]]
+vif = [variance_inflation_factor(X.values, i) for i in range(X.shape[1])]
+df_vif = pd.DataFrame(vif, index=X.columns, columns=["VIF"])
+df_vif
