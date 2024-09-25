@@ -40,6 +40,23 @@ df_subset["satisfaction"] = (
     OneHotEncoder(drop="first").fit_transform(df_subset[["satisfaction"]]).toarray()
 )
 
+# OneHotEncoder(drop="first"):
+
+# The OneHotEncoder is used to transform categorical data into a numeric format that a machine learning model can understand. It converts categories into binary vectors (one-hot encoding), where each category is represented as a unique combination of 0s and 1s.
+# drop="first": When encoding a categorical feature, this parameter drops the first category. This avoids the dummy variable trap, which is a form of multicollinearity that can occur when one category can be predicted as a linear combination of others. By dropping one category, you make the features independent of each other.
+# In this case, the satisfaction column is being encoded into a numeric form, likely from a binary categorical format like "satisfied" and "not satisfied." The first category (e.g., "not satisfied") will be dropped, and the other category ("satisfied") will be encoded as 1.
+
+# fit_transform(df_subset[["satisfaction"]]):
+
+# fit(): Learns the structure of the categorical data (i.e., determines how many unique categories exist in the satisfaction column).
+# transform(): Converts the column into a binary one-hot encoded format.
+# fit_transform() combines both steps, applying them in one operation. It learns the encoding from the satisfaction column and transforms the data into a numeric representation.
+# Since the column is passed inside double square brackets (df_subset[["satisfaction"]]), it is treated as a DataFrame (not a Series), which is what OneHotEncoder expects.
+
+# .toarray():
+
+# The fit_transform() method returns a sparse matrix by default, which is memory efficient. However, the logistic regression model needs a dense matrix or array. Calling .toarray() converts the sparse matrix into a dense NumPy array, which stores the data in a standard format (1s and 0s).
+
 df_subset.head(10)
 
 X = df_subset[["Inflight entertainment"]]
@@ -64,6 +81,21 @@ y_pred
 # Use predict_proba to output a probability.
 
 clf.predict_proba(X_test)
+# The line predicts the probability that each sample in the test set belongs to either class (e.g., "satisfied" or "not satisfied").
+# predict_proba(): This method outputs the probability of each class for each observation in the test set X_test. Instead of just predicting a hard label (0 or 1), this method gives a probabilistic prediction.
+# [[0.30, 0.70],  # 70% chance of being in class 1 (satisfied)
+#  [0.80, 0.20],  # 20% chance of being in class 1 (satisfied)
+#  [0.40, 0.60],  # 60% chance of being in class 1 (satisfied)
+#  [0.90, 0.10],  # 10% chance of being in class 1 (satisfied)
+#  [0.25, 0.75]]  # 75% chance of being in class 1 (satisfied)
+#  After obtaining these probabilities, you can either:
+#
+# Set a threshold (usually 0.5) to classify the samples (e.g., if the probability for class 1 is above 0.5, classify it as "satisfied").
+# Use the raw probabilities for more nuanced decision-making, such as ranking samples by their likelihood of being satisfied.
+
+# By default, scikit-learn's LogisticRegression uses a 0.5 threshold to make predictions. This means:
+# If the predicted probability for class 1 (e.g., "satisfied") is greater than or equal to 0.5, the model classifies the instance as class 1.
+# If the predicted probability for class 1 is less than 0.5, it classifies the instance as class 0.
 
 clf.predict(X_test)
 
