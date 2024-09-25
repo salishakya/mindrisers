@@ -40,6 +40,8 @@ data["Embarked"].mode()[0]
 
 data["Embarked"].fillna(data["Embarked"].mode()[0], inplace=True)
 
+# [0]: Since .mode() can return multiple values as a Series, [0] selects the first mode (the most frequent value).
+
 data["Fare"].fillna(data["Fare"].median(), inplace=True)
 
 
@@ -98,10 +100,21 @@ X_train, X_test, y_train, y_test = train_test_split(
 # Apply Lasso to perform feature selection
 lasso = LassoCV(cv=5, random_state=0).fit(X_train, y_train)
 
+# LassoCV: This is a Lasso regression model with built-in cross-validation to find the best value for the regularization parameter (alpha). The Lasso algorithm works by shrinking some coefficients to zero, which can be used for feature selection.
+# cv=5: This specifies 5-fold cross-validation to tune the regularization parameter.
+# .fit(X_train, y_train): Fits the Lasso model to the training data X_train (the features) and y_train (the target variable).
+
 # Get selected features
 coef = np.where(lasso.coef_ != 0)[0]
+
+# lasso.coef_: After training, this attribute contains the coefficients of the Lasso model for each feature. If a feature's coefficient is 0, it means Lasso deemed it irrelevant.
+# np.where(lasso.coef_ != 0)[0]: This selects the indices of features where the coefficients are not zero, meaning those features were selected by Lasso.
 selected_features = X.columns[coef]
+
+# X.columns[coef]: Using the indices of non-zero coefficients (coef), this maps back to the actual feature names that were selected by Lasso.
 print("Selected features by Lasso:", selected_features)
+
+# Lasso performs both regularization and feature selection. By setting some coefficients to zero, it automatically removes irrelevant or redundant features, making it useful for identifying important features in your dataset.
 
 # Split data into X and y
 X = data[["PassengerId", "Pclass", "Sex"]]
@@ -165,6 +178,8 @@ print(coefficients)
 import statsmodels.api as sm
 
 X_train_sm = sm.add_constant(X_train)
+
+# sm.Logit(): This function creates a logistic regression model. It's designed for binary classification, where the target variable y_train is binary (0 or 1)
 logit_model = sm.Logit(y_train, X_train_sm)
 result = logit_model.fit()
 print(result.summary())
