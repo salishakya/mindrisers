@@ -2,6 +2,8 @@
 
 # Objective: Build a Random Forest model to predict the loan status (Loan_Status) in the test dataset.
 
+# Better to just look at the ipynb file to better understand what I've done here
+
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
