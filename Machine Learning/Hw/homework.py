@@ -85,10 +85,10 @@ X_train_resampled = scaler.fit_transform(X_train_resampled)
 X_test = scaler.transform(X_test)
 
 param_grid = {
-    "C": [0.01, 0.1, 1, 10, 100],
-    "penalty": ["l1", "l2"],
-    "solver": ["liblinear", "saga"],
-    "max_iter": [100, 200, 500],
+    "C": [0.1, 1, 10],
+    "penalty": ["l2"],
+    "solver": ["liblinear"],
+    "max_iter": [100, 200],
 }
 
 # Instantiate Logistic Regression
@@ -118,9 +118,9 @@ tree_model = DecisionTreeClassifier()
 
 # Grid for Decision Tree
 param_grid_tree = {
-    "max_depth": [10, 20, 30, None],
-    "min_samples_split": [2, 10, 20],
-    "min_samples_leaf": [1, 5, 10],
+    "max_depth": [10, 20],
+    "min_samples_split": [2, 10],
+    "min_samples_leaf": [1, 5],
     "criterion": ["gini", "entropy"],
 }
 
