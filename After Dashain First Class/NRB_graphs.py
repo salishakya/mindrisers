@@ -18,7 +18,7 @@ for index, dataframe in enumerate(dataframes, start=1):
     exec(f"data{index} = dataframe")
 
 # data 4 means 4th sheet
-data4 = data4.drop([0, 1, 3]).reset_index(drop=True)
+data4 = data4.drop([0, 1, 3]).reset_index(drop=True)  # type: ignore
 data4.head()
 
 data4.drop(columns=["Unnamed: 0", "Unnamed: 1"], inplace=True)
